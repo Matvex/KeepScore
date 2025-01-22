@@ -1,0 +1,9 @@
+<div class="header">
+  <h1>KeepScore</h1>
+<ul class="tabs">
+  <li><%= link_to "User", users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %></li>
+  <li><%= link_to "Sessions", game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %></li>
+  <li><%= link_to "Scores", scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %></li>
+  <li><%= link_to "Stats", stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %></li>
+</ul>
+</div>
