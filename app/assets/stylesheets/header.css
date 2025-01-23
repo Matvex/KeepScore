@@ -1,21 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fff;
-  z-index: 1000; /* Ensure the header is above other content */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  background-color: var(--primary-color);
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
 }
-body {
-  padding-top: 60px; /* Adjust this value based on the height of your header */
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
 }
-.tabs {
-  margin-top: 20px;
+
+.nav-link-container {
+  gap: 40px;
+  margin-top: 10px;
+  flex-wrap: nowrap;
 }
-.tab-content {
-  display: none;
+
+.nav-link {
+  text-decoration: none;
+  color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  flex: 1;
+  text-align: center;
 }
-.tab-content.active {
-  display: block;
+
+.nav-link:hover {
+  background-color: #e9ecef;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.content-container {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .nav-link-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav_link {
+    flex: 1 1 45%;
+  }
+
+  .tabs {
+    width: 100%;
+  }
 }
