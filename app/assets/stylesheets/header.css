@@ -42,12 +42,8 @@
 }
 
 .nav-link.active {
-  background-color: #007bff;
+  background-color: var(--select-color);
   color: #fff;
-}
-
-.content-container {
-  padding-top: 100px;
 }
 
 @media (max-width: 768px) {
