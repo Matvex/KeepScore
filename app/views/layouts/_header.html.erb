@@ -1,10 +1,14 @@
 <div class="header">
   <h1>KeepScore</h1>
   <div class="nav-link-container">
-    <%= link_to "User", users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-    <%= link_to "Sessions", game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-    <%= link_to "Scores", scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-    <%= link_to "Stats", stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+    <% if user_signed_in? %>
+      <%= link_to "User", users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to "Sessions", game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to "Scores", scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to "Stats", stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+    <% else %>
+      <%= link_to "Login", new_session_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+    <% end %>
   </div>
 </div>
 
