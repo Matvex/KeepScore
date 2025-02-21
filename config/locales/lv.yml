@@ -1,0 +1,26 @@
+lv:
+  switch_language: "Pārslēgties uz angļu valodu"
+
+  user:
+    title: "Lietotāji"
+    index:
+      logout: "Izrakstīties"
+      login: "Pieslēgties"
+
+  game_sessions:
+    title: "Sesijas"
+    index:
+      title: "GameSessions#index"
+      find_me: "Atrodiet mani app/views/game_sessions/index.html.erb"
+
+  scores:
+    title: "Rezultāti"
+    index:
+      title: "Scores#index"
+      find_me: "Atrodiet mani app/views/scores/index.html.erb"
+
+  stats:
+    title: "Statistika"
+    index:
+      title: "Statistika#index"
+      find_me: "Atrodiet mani app/views/stats/index.html.erb"

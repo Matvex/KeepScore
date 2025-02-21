@@ -2,13 +2,23 @@
   <h1>KeepScore</h1>
   <div class="nav-link-container">
     <% if user_signed_in? %>
-      <%= link_to "User", users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to "Sessions", game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to "Scores", scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to "Stats", stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('user.title'), users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('game_sessions.title'), game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('scores.title'), scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('stats.title'), stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
     <% else %>
-      <%= link_to "Login", new_session_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('user.title'), new_session_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
     <% end %>
+  </div>
+  <div class="language-switcher-wrapper">
+    <span class="language-label">EN</span>
+    <%= form_with url: url_for(locale: I18n.locale == :en ? :lv : :en), method: :get, data: { turbo: true }, id: "language-switch-form" do %>
+      <label class="switch">
+        <input type="checkbox" id="language-switch" <%= 'checked' if I18n.locale == :lv %>>
+        <span class="slider round"></span>
+      </label>
+    <% end %>
+    <span class="language-label">LV</span>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="user-info form-group">
   <%= text_field_tag :username, current_user.username, class: "form-input", readonly: true %>
 </div>
-<%= link_to "Logout", logout_path, 
+<%= link_to t('user.index.logout'), logout_path, 
             data: { "turbo-method": :delete, turbo_confirm: "Are you sure you want to log out?" }, 
             class: "button" %>
