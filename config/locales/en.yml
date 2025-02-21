@@ -28,4 +28,28 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  switch_language: "Switch to Latvian"
+
+  user:
+    title: "Users"
+    index:
+      logout: "Logout"
+      login: "Login"
+
+  game_sessions:
+    title: "Sessions"
+    index:
+      title: "GameSessions#index"
+      find_me: "Find me in app/views/game_sessions/index.html.erb"
+
+  scores:
+    title: "Scores"
+    index:
+      title: "Scores#index"
+      find_me: "Find me in app/views/scores/index.html.erb"
+
+  stats:
+    title: "Stats"
+    index:
+      title: "Stats#index"
+      find_me: "Find me in app/views/stats/index.html.erb"

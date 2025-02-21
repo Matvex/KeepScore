@@ -9,6 +9,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # return unless Rails.env.test?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'capybara/rspec'
+require 'webdrivers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -33,6 +35,20 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+# Explicitly set the ChromeDriver version
+Webdrivers::Chromedriver.required_version = '114.0.5735.90' # Replace with your Chrome version
+
+Capybara.register_driver :selenium_chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(args: [ 'headless', 'disable-gpu', 'window-size=1280,1024' ]))
+end
+
+Capybara.javascript_driver = :selenium_chrome_headless
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -62,7 +78,7 @@ RSpec.configure do |config|
   # behaviour is considered legacy and will be removed in a future version.
   #
   # To enable this behaviour uncomment the line below.
-  # config.infer_spec_type_from_file_location!
+  config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
@@ -70,4 +86,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:each, type: :feature) do
+    if RSpec.current_example.metadata[:js]
+      Capybara.current_driver = Capybara.javascript_driver
+    else
+      Capybara.use_default_driver
+    end
+  end
+
+  config.after(:each, type: :feature) do
+    Capybara.use_default_driver
+  end
 end
