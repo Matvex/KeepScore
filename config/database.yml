@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: ksuser
+  username: keepscore
   password: Latvia78
   host: localhost
 
@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: keep_score_production
-  username: ksuser
+  username: keepscore
   password: <%= ENV['YOUR_PRODUCTION_DATABASE_PASSWORD'] %>
