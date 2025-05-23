@@ -1,20 +1,23 @@
 <div class="header">
   <h1>KeepScore</h1>
-  <div class="nav-link-container">
+  <div class="nav-link-container" data-controller="nav">
     <% if user_signed_in? %>
-      <%= link_to t('user.title'), users_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to t('game_sessions.title'), game_sessions_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to t('scores.title'), scores_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
-      <%= link_to t('stats.title'), stats_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+        <%= link_to t('user.title'), users_path, class: "nav-link", data: { nav_target: "link" } %>
+        <%= link_to t('game_sessions.title'), game_sessions_path, class: "nav-link", data: { nav_target: "link" } %>
+        <%= link_to t('scores.title'), scores_path, class: "nav-link", data: { nav_target: "link" } %>
+        <%= link_to t('stats.title'), stats_path, class: "nav-link", data: { nav_target: "link" } %>
     <% else %>
-      <%= link_to t('user.title'), new_session_path, class: "nav-link", data: {"turbo-frame": :"tab_content"} %>
+      <%= link_to t('user.title'), new_session_path, class: "nav-link", data: { nav_target: "link" } %>
     <% end %>
   </div>
-  <div class="language-switcher-wrapper">
+  <div class="language-switcher-wrapper" data-controller="language">
     <span class="language-label">EN</span>
-    <%= form_with url: url_for(locale: I18n.locale == :en ? :lv : :en), method: :get, data: { turbo: true }, id: "language-switch-form" do %>
+    <%= form_with url: url_for(locale: I18n.locale == :en ? :lv : :en), method: :get, data: { turbo: true }, id: "language-switch-form", data: { language_target: "form" } do %>
       <label class="switch">
-        <input type="checkbox" id="language-switch" <%= 'checked' if I18n.locale == :lv %>>
+        <input type="checkbox"
+              id="language-switch"
+              data-language-target="switch"
+              <%= 'checked' if I18n.locale == :lv %>>
         <span class="slider round"></span>
       </label>
     <% end %>
