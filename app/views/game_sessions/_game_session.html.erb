@@ -1,0 +1,26 @@
+<li class="game-session-item">
+  <div class="flex-between">
+    <div class="game-session-meta">
+      <strong><%= t('game_sessions.index.last_game_played_at') %>:</strong> <%= game_session.updated_at.strftime("%Y-%m-%d %H:%M:%S") %><br>
+      <strong><%= t('game_sessions.index.created_at') %>:</strong> <%= game_session.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </div>
+    <div class="game-session-actions">
+      <%= link_to t('game_sessions.index.load'), scores_path(game_session_id: game_session.id),
+        class: "btn btn-success" %>
+      <%= button_to t('game_sessions.index.delete'), game_session_path(game_session),
+        method: :delete,
+        data: { turbo_confirm: t('game_sessions.index.confirm_delete') },
+        class: "btn btn-danger" %>
+    </div>
+  </div>
+  <div class="game-session-names flex-between">
+    <% [game_session.name1, game_session.name2, game_session.name3, game_session.name4].each do |name| %>
+      <div><%= name.present? ? name : "-" %></div>
+    <% end %>
+  </div>
+  <div class="game-session-points flex-between">
+    <% [game_session.total_points1, game_session.total_points2, game_session.total_points3, game_session.total_points4].each do |points| %>
+      <div><%= points || 0 %></div>
+    <% end %>
+  </div>
+</li>

@@ -1,0 +1,58 @@
+.game-session-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.game-session-meta {
+  font-size: 0.9em;
+}
+
+.game-session-actions {
+  /* Add custom styles for the action buttons container if needed */
+}
+
+.game-session-names,
+.game-session-points {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-session-points {
+  margin-top: 5px;
+}
+
+.field { 
+  display: flex;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-sessions-index-container {
+  width: 400px;
+}
+
+/* New game session button */
+.game-session-new-btn {
+  margin-bottom: 10px;
+}
+
+/* Form wrapper for slide-down effect */
+#new-game-session-form-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+/* New game session form inner margin */
+#new-game-session-form {
+  margin-top: 20px;
+}
+
+/* Game session list */
+.game-session-list {
+  list-style-type: none;
+  padding: 0;
+}

@@ -1,2 +1,36 @@
-<h1><%= t('scores.index.title') %></h1>
-<p><%= t('scores.index.find_me') %></p>
+<!-- filepath: /home/matvex/Code/KeepScore/app/views/game_sessions/show.html.erb -->
+<div class="container mt-4">
+  <% if @game_session.nil? %>
+    <h1 class="text-center"><%= t('scores.index.no_game_session_loaded') %></h1>
+  <% else %>
+    <ul class="list-group">
+      <% if @game_session.name1.present? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= @game_session.name1 %>
+          <span class="badge bg-primary rounded-pill" id="score-player1"><%= @game_session.total_points1 %></span>
+        </li>
+      <% end %>
+      
+      <% if @game_session.name2.present? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= @game_session.name2 %>
+          <span class="badge bg-primary rounded-pill" id="score-player2"><%= @game_session.total_points2 %></span>
+        </li>
+      <% end %>
+      
+      <% if @game_session.name3.present? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= @game_session.name3 %>
+          <span class="badge bg-primary rounded-pill" id="score-player3"><%= @game_session.total_points3 %></span>
+        </li>
+      <% end %>
+      
+      <% if @game_session.name4.present? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= @game_session.name4 %>
+          <span class="badge bg-primary rounded-pill" id="score-player4"><%= @game_session.total_points4 %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

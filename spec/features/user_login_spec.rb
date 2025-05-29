@@ -10,7 +10,7 @@ RSpec.feature "UserLogin", type: :feature do
     fill_in "Password", with: user.password
     click_button "Login"
 
-    expect(page).to have_content("GameSessions")
+    expect(page).to have_content("Sessions")
   end
 
   scenario "User logs in with invalid credentials" do

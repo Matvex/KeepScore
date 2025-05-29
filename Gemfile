@@ -68,4 +68,5 @@ group :test do
 
   # RSpec testing framework for Rails [https://github.com/rspec/rspec-rails]
   gem "rspec-rails"
+  gem "rails-controller-testing"
 end

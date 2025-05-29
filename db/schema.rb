@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_24_135209) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_21_160921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "game_sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name1", limit: 16
+    t.string "name2", limit: 16
+    t.string "name3", limit: 16
+    t.string "name4", limit: 16
+    t.bigint "total_points1", default: 0, null: false
+    t.bigint "total_points2", default: 0, null: false
+    t.bigint "total_points3", default: 0, null: false
+    t.bigint "total_points4", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_game_sessions_on_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

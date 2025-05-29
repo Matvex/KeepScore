@@ -1,2 +1,24 @@
-<h1><%= t('game_sessions.index.title') %></h1>
-<p><%= t('game_sessions.index.find_me') %></p>
+<div class="game-sessions-index-container" data-controller="game-session"
+  data-game-session-has-errors-value="<%= @game_session.errors.any? %>">
+  <%= button_tag t('game_sessions.index.new_game_session'),
+      class: "btn btn-success game-session-new-btn",
+      type: "button",
+      data: { action: "game-session#toggleForm" } %>
+
+  <div data-game-session-target="formWrapper"
+       id="new-game-session-form-wrapper">
+    <turbo-frame id="new_game_session_form">
+      <div id="new-game-session-form">
+        <%= render 'form' %>
+      </div>
+    </turbo-frame>
+  </div>
+
+  <% if @game_sessions.any? %>
+    <ul class="game-session-list">
+      <%= render partial: 'game_sessions/game_session', collection: @game_sessions, as: :game_session %>
+    </ul>
+  <% else %>
+    <p><%= t('game_sessions.index.no_game_sessions') %></p>
+  <% end %>
+</div>

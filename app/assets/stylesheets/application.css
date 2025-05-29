@@ -33,10 +33,19 @@ body {
   cursor: pointer;
 }
 
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border: 2px solid #e3342f !important;
+  background: #fff0f0;
+}
+
 .flash {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
+  word-break: break-word;
+  white-space: pre-line;
 }
 
 .flash.notice {
