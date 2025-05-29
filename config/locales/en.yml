@@ -39,8 +39,18 @@ en:
   game_sessions:
     title: "Sessions"
     index:
-      title: "GameSessions#index"
-      find_me: "Find me in app/views/game_sessions/index.html.erb"
+      new_game_session: "New Game Session"
+      no_game_sessions: "You have no game sessions."
+      created_at: "Created at"
+      last_game_played_at: "Last game played at"
+      load: "Load"
+      delete: "Delete"
+      confirm_delete: "Are you sure you want to delete this game session?"
+      no_game_session_loaded: "No Game Session Loaded"
+    form:
+      create: "Create Game Session"
+    errors:
+      names_must_be_unique: "Player names must be unique"
 
   scores:
     title: "Scores"

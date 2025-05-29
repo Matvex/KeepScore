@@ -10,8 +10,18 @@ lv:
   game_sessions:
     title: "Sesijas"
     index:
-      title: "GameSessions#index"
-      find_me: "Atrodiet mani app/views/game_sessions/index.html.erb"
+      new_game_session: "Jauna spēļu sesija"
+      no_game_sessions: "Jums nav spēļu sesiju."
+      created_at: "Izveidots"
+      last_game_played_at: "Pēdējā spēle"
+      load: "Ielādēt"
+      delete: "Dzēst"
+      confirm_delete: "Vai tiešām vēlaties dzēst?"
+      no_game_session_loaded: "Nav ielādēta neviena spēļu sesija"
+    form:
+      create: "Izveidot spēļu sesiju"
+    errors:
+      names_must_be_unique: "Spēlētāju vārdiem jābūt unikāliem"
 
   scores:
     title: "Rezultāti"

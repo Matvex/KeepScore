@@ -18,7 +18,15 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy", as: "logout"
 
   resources :users, only: [ :index ]
-  resources :game_sessions, only: [ :index ]
-  resources :scores, only: [ :index ]
-  resources :stats, only: [ :index ]
+
+  get    "game_sessions",          to: "game_sessions#index",  as: :game_sessions
+  get    "game_sessions/new",      to: "game_sessions#new",    as: :new_game_session
+  post   "game_sessions",          to: "game_sessions#create"
+  get    "game_sessions/:id/edit", to: "game_sessions#edit",   as: :edit_game_session
+  patch  "game_sessions/:id",      to: "game_sessions#update"
+  delete "game_sessions/:id",      to: "game_sessions#destroy", as: :game_session
+
+  get    "scores",   to: "scores#index",     as: :scores
+
+  get    "stats",    to: "stats#index",      as: :stats
 end

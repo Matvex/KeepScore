@@ -1,0 +1,31 @@
+<%= form_with(model: @game_session, local: true, data: { turbo_frame: "_top" }) do |form| %>
+  <% if @game_session.errors.any? %>
+    <div id="flash-messages">
+      <%= render "layouts/flash" %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name1 %>
+    <%= form.text_field :name1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name2 %>
+    <%= form.text_field :name2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name3 %>
+    <%= form.text_field :name3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name4 %>
+    <%= form.text_field :name4 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('game_sessions.form.create') %>
+  </div>
+<% end %>
