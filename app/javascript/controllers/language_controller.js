@@ -13,6 +13,6 @@ export default class extends Controller {
     const form = this.formTarget
     const url = new URL(form.action)
     url.searchParams.set("locale", this.switchTarget.checked ? "lv" : "en")
-    window.Turbo.visit(url.toString())
+    Turbo.visit(url.toString())
   }
 }
