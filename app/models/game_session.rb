@@ -17,6 +17,7 @@
 #
 class GameSession < ApplicationRecord
   belongs_to :user
+  has_many :scores, dependent: :destroy
 
   validates :name1, :name2, :name3, :name4, presence: true
   validate :names_are_unique

@@ -1,36 +1,46 @@
-<!-- filepath: /home/matvex/Code/KeepScore/app/views/game_sessions/show.html.erb -->
-<div class="container mt-4">
+<!-- filepath: /home/matvex/Code/KeepScore/app/views/scores/index.html.erb -->
+<div class="scores-container">
   <% if @game_session.nil? %>
     <h1 class="text-center"><%= t('scores.index.no_game_session_loaded') %></h1>
   <% else %>
-    <ul class="list-group">
-      <% if @game_session.name1.present? %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= @game_session.name1 %>
-          <span class="badge bg-primary rounded-pill" id="score-player1"><%= @game_session.total_points1 %></span>
-        </li>
-      <% end %>
-      
-      <% if @game_session.name2.present? %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= @game_session.name2 %>
-          <span class="badge bg-primary rounded-pill" id="score-player2"><%= @game_session.total_points2 %></span>
-        </li>
-      <% end %>
-      
-      <% if @game_session.name3.present? %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= @game_session.name3 %>
-          <span class="badge bg-primary rounded-pill" id="score-player3"><%= @game_session.total_points3 %></span>
-        </li>
-      <% end %>
-      
-      <% if @game_session.name4.present? %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= @game_session.name4 %>
-          <span class="badge bg-primary rounded-pill" id="score-player4"><%= @game_session.total_points4 %></span>
-        </li>
-      <% end %>
-    </ul>
+    <h1><%= @game_session.name1 %> • <%= @game_session.name2 %> • <%= @game_session.name3 %> • <%= @game_session.name4 %></h1>
+    
+    <% if @scores.any? %>
+      <div class="scores-table-wrapper">
+        <table class="scores-table">
+          <thead>
+            <tr class="scores-header">
+              <th class="player-name" style="width: 25%; min-width: 100px;"><%= @game_session.name1 %></th>
+              <th class="player-name" style="width: 25%; min-width: 100px;"><%= @game_session.name2 %></th>
+              <th class="player-name" style="width: 25%; min-width: 100px;"><%= @game_session.name3 %></th>
+              <th class="player-name" style="width: 25%; min-width: 100px;"><%= @game_session.name4 %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% # Group scores by game (each game has 4 player scores) %>
+            <% @scores.group_by { |s| s.created_at.to_date }.each do |date, daily_scores| %>
+              <% daily_scores.group_by { |s| s.created_at.to_i / 3600 }.each do |hour, hourly_scores| %>
+                <% # Get all scores for this "game" - they should be roughly at same time %>
+                <% game_scores = hourly_scores.sort_by { |s| [s.created_at, s.player_name] } %>
+                <% players = [@game_session.name1, @game_session.name2, @game_session.name3, @game_session.name4] %>
+                <% players.each do |player_name| %>
+                  <% player_score = game_scores.find { |s| s.player_name == player_name } %>
+                  <% if player_score %>
+                    <tr class="scores-row">
+                      <td class="score-cell"><%= render 'score_cell', score: player_score, player_name: @game_session.name1, is_same_player: @game_session.name1 == player_name %></td>
+                      <td class="score-cell"><%= render 'score_cell', score: player_score, player_name: @game_session.name2, is_same_player: @game_session.name2 == player_name %></td>
+                      <td class="score-cell"><%= render 'score_cell', score: player_score, player_name: @game_session.name3, is_same_player: @game_session.name3 == player_name %></td>
+                      <td class="score-cell"><%= render 'score_cell', score: player_score, player_name: @game_session.name4, is_same_player: @game_session.name4 == player_name %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="no-scores-message"><%= t('scores.index.no_scores_yet') %></p>
+    <% end %>
   <% end %>
 </div>
