@@ -12,7 +12,7 @@
   </div>
   <div class="language-switcher-wrapper" data-controller="language">
     <span class="language-label">EN</span>
-    <%= form_with url: url_for(locale: I18n.locale == :en ? :lv : :en), method: :get, data: { turbo: true }, id: "language-switch-form", data: { language_target: "form" } do %>
+    <%= form_with url: url_for(locale: I18n.locale == :en ? :lv : :en), method: :get, id: "language-switch-form", data: { turbo: true, language_target: "form" } do %>
       <label class="switch">
         <input type="checkbox"
               id="language-switch"
