@@ -1,0 +1,102 @@
+/* Scores table container with sticky headers */
+.scores-container {
+  padding: 20px;
+  max-width: 100%;
+}
+
+.scores-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Wrapper for scrollable table */
+.scores-table-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+/* Scores table styling */
+.scores-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* Sticky header row */
+.scores-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.scores-header th {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  border-right: 1px solid #dee2e6;
+}
+
+.scores-header th:last-child {
+  border-right: none;
+}
+
+.scores-header th.player-name {
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Score rows */
+.scores-row {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.scores-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Score cells */
+.score-cell {
+  padding: 12px;
+  text-align: center;
+  border-right: 1px solid #dee2e6;
+}
+
+.score-cell:last-child {
+  border-right: none;
+}
+
+/* Score points display */
+.score-point {
+  display: inline-block;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.score-point.win {
+  color: #28a745;
+  background-color: #e8f5e9;
+}
+
+.score-point.loss {
+  color: #dc3545;
+  background-color: #ffebee;
+}
+
+/* No scores message */
+.no-scores-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+  font-size: 1.1rem;
+}

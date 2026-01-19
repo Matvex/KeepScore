@@ -1,0 +1,5 @@
+<% if is_same_player %>
+  <span class="score-point <%= score.won ? 'win' : 'loss' %>">
+    <%= score.points > 0 ? '+' : '' %><%= score.points %>
+  </span>
+<% end %>
