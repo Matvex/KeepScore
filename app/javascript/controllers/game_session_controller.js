@@ -5,7 +5,10 @@ export default class extends Controller {
   static values = { hasErrors: Boolean }
 
   connect() {
-    if (this.hasErrorsValue) {
+    // Initialize form as closed
+    if (!this.hasErrorsValue) {
+      this.formWrapperTarget.style.maxHeight = "0"
+    } else {
       this.openForm()
     }
   }
